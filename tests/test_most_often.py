@@ -49,5 +49,29 @@ def test_list_with_equal_items_and_extra_item_returns_no_winner():
     assert most_often.get_most_often() == "no clear winner"
 
 """
+Given an empty list where we add an item
+list updates with the item
+"""
+def test_add_item_adds_to_list():
+    most_often = MostOften([])
+    most_often.add_new(False)
+    assert most_often.starting_list == [False]
 
 """
+Given a populated list where we add an item
+list updates with the item
+"""
+def test_add_item_to_populated_list():
+    most_often = MostOften([1, 2, 3, "4"])
+    most_often.add_new(4)
+    assert most_often.starting_list == [1, 2, 3, "4", 4]
+
+"""
+Given a populated list where we add a list
+list updates with the item and most often returns new item
+"""
+def test_add_list_item_to_populated_list():
+    most_often = MostOften([[1, 2, 3, "4"]])
+    most_often.add_new([1, 2, 3, "4"])
+    assert most_often.starting_list == [[1, 2, 3, "4"], [1, 2, 3, "4"]]
+    assert most_often.get_most_often() == [1, 2, 3, "4"]
