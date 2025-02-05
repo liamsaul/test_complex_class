@@ -7,7 +7,14 @@ class MostOften:
 
     def get_most_often(self):
         # use set() to create a list of unique items
-        unique_items = set(self.starting_list)
+        
+        unique_items = []
+
+        for item in self.starting_list:
+            if item not in unique_items:
+                unique_items.append(item)
+                
+        print(unique_items)
 
         # set up our highest recorded variables
         highest_count = 0
